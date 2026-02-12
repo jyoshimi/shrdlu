@@ -1,0 +1,19 @@
+{
+  "name": "shrdlu-web",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && touch dist/.nojekyll && git add -f dist && git commit -m 'Deploy' && git subtree push --prefix dist origin gh-pages"
+  },
+  "dependencies": {
+    "phaser": "^3.80.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  }
+}
