@@ -48,8 +48,8 @@ export class CommandParser {
     
 Movement:
   - move the small pyramid to the table
-  - put the small block on the large pyramid
-  - stack the small block on the large block
+  - put the large pyramid on the large block
+  - stack the large pyramid on the large block
   
 Queries:
   - what is on the table?
@@ -106,7 +106,7 @@ Type a command to interact with the blocks world.`;
   }
 
   private handlePut(cmd: string): string {
-    const parts = cmd.split(/\s+on\s+|\s+onto\s+/);
+    const parts = cmd.split(/\s+(?:on|onto|to)\s+/);
     if (parts.length < 2) {
       return "I need to know what to put and where to put it.";
     }
@@ -116,7 +116,12 @@ Type a command to interact with the blocks world.`;
 
     const obj = this.findObjectFromParsed(objParsed, parts[0]);
     if (!obj) {
-      return "I don't see the object you want to move.";
+      const matches = this.world.findObjects(objParsed.type, objParsed.color, objParsed.size);
+      if (matches.length === 0) {
+        return "I don't see the object you want to move.";
+      } else {
+        return `I don't understand which ${objParsed.type || 'object'} you mean. There are ${matches.length} matching objects.`;
+      }
     }
 
     let target: BlockObject | null = null;
@@ -125,7 +130,12 @@ Type a command to interact with the blocks world.`;
     } else {
       target = this.findObjectFromParsed(targetParsed, parts[1]);
       if (!target) {
-        return "I don't see the target object.";
+        const matches = this.world.findObjects(targetParsed.type, targetParsed.color, targetParsed.size);
+        if (matches.length === 0) {
+          return "I don't see the target object.";
+        } else {
+          return `I don't understand which ${targetParsed.type || 'object'} you mean as the target. There are ${matches.length} matching objects.`;
+        }
       }
     }
 
@@ -149,7 +159,7 @@ Type a command to interact with the blocks world.`;
   }
 
   private handleMove(cmd: string): string {
-    return this.handlePut(cmd.replace('move', 'put'));
+    return this.handlePut(cmd);
   }
 
   private handleStack(cmd: string): string {
