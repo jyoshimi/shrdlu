@@ -47,16 +47,16 @@ export class CommandParser {
     return `Available commands:
     
 Movement:
-  - put the small block on the large block
-  - move the pyramid to the table
+  - move the small pyramid to the table
+  - put the small block on the large pyramid
   - stack the small block on the large block
-  - place the large block on the table
   
 Queries:
-  - what is on the large block?
   - what is on the table?
+  - what is on the large block?
   - how many blocks are there?
-  - is the pyramid on the table?
+  - how many pyramids are there?
+  - is the small pyramid on the table?
   - what is the tallest block?
   
 Type a command to interact with the blocks world.`;
