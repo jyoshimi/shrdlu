@@ -141,15 +141,6 @@ export class WorldScene extends Phaser.Scene {
     }
   }
 
-  private getColor(colorName: string): number {
-    const colors: { [key: string]: number } = {
-      red: 0xff4444,
-      green: 0x44ff44,
-      blue: 0x4444ff,
-      yellow: 0xffff44,
-    };
-    return colors[colorName] || 0xffffff;
-  }
 
   private renderBlock(obj: BlockObject, isSelected: boolean): void {
     const w = obj.width / 2;
@@ -245,15 +236,13 @@ export class WorldScene extends Phaser.Scene {
     this.graphics.strokeCircle(center.x, center.y, radius);
 
     this.graphics.beginPath();
-    this.graphics.arc(center.x, center.y, radius, 0, Math.PI * 2, false);
+    this.graphics.moveTo(center.x - radius, center.y);
+    this.graphics.lineTo(center.x + radius, center.y);
     this.graphics.strokePath();
 
     this.graphics.beginPath();
-    this.graphics.ellipse(center.x, center.y, radius, radius * 0.3, 0, 0, Math.PI * 2);
-    this.graphics.strokePath();
-
-    this.graphics.beginPath();
-    this.graphics.ellipse(center.x, center.y, radius * 0.3, radius, 0, 0, Math.PI * 2);
+    this.graphics.moveTo(center.x, center.y - radius);
+    this.graphics.lineTo(center.x, center.y + radius);
     this.graphics.strokePath();
   }
 
