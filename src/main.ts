@@ -30,6 +30,14 @@ const helpButton = document.getElementById('show-help')!;
 const helpModal = document.getElementById('help-modal')!;
 const closeHelp = document.getElementById('close-help')!;
 
+function openHelpModal() {
+  helpModal.style.display = 'block';
+}
+
+function closeHelpModal() {
+  helpModal.style.display = 'none';
+}
+
 function getScene(): WorldScene | null {
   return game.scene.getScene('WorldScene') as WorldScene;
 }
@@ -75,16 +83,22 @@ resetButton.addEventListener('click', () => {
 });
 
 helpButton.addEventListener('click', () => {
-  helpModal.style.display = 'block';
+  openHelpModal();
 });
 
 closeHelp.addEventListener('click', () => {
-  helpModal.style.display = 'none';
+  closeHelpModal();
 });
 
 window.addEventListener('click', (e) => {
   if (e.target === helpModal) {
-    helpModal.style.display = 'none';
+    closeHelpModal();
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && helpModal.style.display === 'block') {
+    closeHelpModal();
   }
 });
 
