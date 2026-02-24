@@ -12,15 +12,15 @@ export class WorldManager {
   private initializeWorld(): void {
     this.objects = [
       new BlockObject('obj1', 'block', 'red', 'large', { x: -150, y: -100, z: 0 }),
-      new BlockObject('obj2', 'block', 'blue', 'large', { x: 50, y: -100, z: 0 }),
-      new BlockObject('obj3', 'block', 'green', 'small', { x: -150, y: 100, z: 0 }),
-      new BlockObject('obj4', 'pyramid', 'red', 'small', { x: 50, y: -100, z: 80 }),
-      new BlockObject('obj5', 'pyramid', 'green', 'large', { x: 50, y: 100, z: 0 }),
-      new BlockObject('obj6', 'block', 'yellow', 'small', { x: -50, y: 0, z: 0 }),
+      new BlockObject('obj2', 'block', 'blue', 'small', { x: -20, y: 70, z: 0 }),
+      new BlockObject('obj3', 'pyramid', 'green', 'small', { x: -150, y: -100, z: 80 }),
+      new BlockObject('obj4', 'pyramid', 'yellow', 'large', { x: 120, y: -30, z: 0 }),
+      new BlockObject('obj5', 'ball', 'red', 'small', { x: 40, y: 120, z: 0 }),
+      new BlockObject('obj6', 'ball', 'blue', 'large', { x: 180, y: 90, z: 0 }),
     ];
 
-    this.objects[3].supportedBy = this.objects[1];
-    this.objects[1].supporting.push(this.objects[3]);
+    this.objects[2].supportedBy = this.objects[0];
+    this.objects[0].supporting.push(this.objects[2]);
   }
 
   reset(): void {

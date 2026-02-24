@@ -227,6 +227,7 @@
       
       <h3>About SHRDLU</h3>
       <p>SHRDLU is a natural language understanding program created by Terry Winograd at MIT in 1968-1970. It allows you to manipulate objects in a "blocks world" using English commands.</p>
+      <p>This is a simplified/modded version of SHRDLU and does not use color words in commands.</p>
       <p>The name comes from the ETAOIN SHRDLU letter-frequency sequence used in old Linotype typesetting.</p>
       <p><a href="https://en.wikipedia.org/wiki/SHRDLU" target="_blank" rel="noopener noreferrer">Read the SHRDLU wiki page</a></p>
       
@@ -247,8 +248,9 @@
         <ul>
           <li><code>is the small pyramid on the table?</code></li>
           <li><code>what is the tallest block?</code></li>
+          <li><code>how many balls are there?</code></li>
           <li><code>how many pyramids are there?</code></li>
-          <li><code>stack the large pyramid on the large block</code></li>
+          <li><code>stack the small pyramid on the small block</code></li>
         </ul>
       </div>
       
@@ -281,7 +283,7 @@
       
       <h3>Tips</h3>
       <ul>
-        <li>Use "the" to refer to specific objects (e.g., "the large block")</li>
+        <li>Use type + size for specific objects (e.g., "the large block")</li>
         <li>You can use size adjectives to specify objects (e.g., "large", "small")</li>
         <li>If there are multiple matching objects, the system will tell you to be more specific</li>
         <li>The system understands context from previous commands</li>

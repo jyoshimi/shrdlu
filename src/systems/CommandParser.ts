@@ -49,17 +49,18 @@ export class CommandParser {
 Movement:
   - move the small pyramid to the table
   - put the large pyramid on the large block
-  - stack the large pyramid on the large block
+  - stack the small pyramid on the small block
   
 Queries:
   - what is on the table?
   - what is on the large block?
   - how many blocks are there?
   - how many pyramids are there?
+  - how many balls are there?
   - is the small pyramid on the table?
   - what is the tallest block?
   
-Type a command to interact with the blocks world.`;
+This simplified/modded version does not use color words in commands.`;
   }
 
   private parseObject(text: string): ParsedObject {
@@ -183,7 +184,11 @@ Type a command to interact with the blocks world.`;
     const obj = this.findObjectFromParsed(parsed, cmd);
 
     if (!obj) {
-      return "I don't see that object.";
+      const matches = this.world.findObjects(parsed.type, parsed.color, parsed.size);
+      if (matches.length === 0) {
+        return "I don't see that object.";
+      }
+      return `I don't understand which ${parsed.type || 'object'} you mean. There are ${matches.length} matching objects.`;
     }
 
     const objectsOn = this.world.getObjectsOn(obj);

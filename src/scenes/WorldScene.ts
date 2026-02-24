@@ -234,16 +234,6 @@ export class WorldScene extends Phaser.Scene {
 
     this.graphics.lineStyle(lineWidth, lineColor, 1);
     this.graphics.strokeCircle(center.x, center.y, radius);
-
-    this.graphics.beginPath();
-    this.graphics.moveTo(center.x - radius, center.y);
-    this.graphics.lineTo(center.x + radius, center.y);
-    this.graphics.strokePath();
-
-    this.graphics.beginPath();
-    this.graphics.moveTo(center.x, center.y - radius);
-    this.graphics.lineTo(center.x, center.y + radius);
-    this.graphics.strokePath();
   }
 
   public executeCommand(command: string): void {
