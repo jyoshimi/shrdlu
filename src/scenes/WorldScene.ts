@@ -234,6 +234,14 @@ export class WorldScene extends Phaser.Scene {
 
     this.graphics.lineStyle(lineWidth, lineColor, 1);
     this.graphics.strokeCircle(center.x, center.y, radius);
+    const equatorWidth = radius * 2;
+    const equatorHeight = radius * 0.95;
+    const meridianWidth = radius * 0.95;
+    const meridianHeight = radius * 2;
+
+    // Latitude (horizontal wrap) and longitude (top-to-bottom wrap) curves.
+    this.graphics.strokeEllipse(center.x, center.y, equatorWidth, equatorHeight);
+    this.graphics.strokeEllipse(center.x, center.y, meridianWidth, meridianHeight);
   }
 
   public executeCommand(command: string): void {

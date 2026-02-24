@@ -44,22 +44,26 @@ export class CommandParser {
   }
 
   private handleHelp(): string {
-    return `Available commands:
-    
-Movement:
-  - move the small pyramid to the table
-  - put the large pyramid on the large block
-  - stack the small pyramid on the small block
-  
-Queries:
+    return `Sample commands:
   - what is on the table?
   - what is on the large block?
   - how many blocks are there?
-  - how many pyramids are there?
-  - how many balls are there?
+  - move the small pyramid to the table
+  - put the large pyramid on the large block
   - is the small pyramid on the table?
   - what is the tallest block?
-  
+  - how many balls are there?
+  - how many pyramids are there?
+  - stack the small pyramid on the small block
+
+Available commands (systematic):
+  - Move objects: put|place|move|stack the <size> <type> on|to the <size> <type>
+  - Move to table: move the <size> <type> to the table
+  - Ask support relation: what is on the table? / what is on the <size> <type>?
+  - Count objects: how many blocks|pyramids|balls are there?
+  - Yes/no support check: is the <size> <type> on the table? / is the <size> <type> on the <size> <type>?
+  - Tallest object query: what is the tallest block?
+
 This simplified/modded version does not use color words in commands.`;
   }
 
